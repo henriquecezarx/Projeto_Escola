@@ -1,0 +1,544 @@
+<style>
+
+body{
+ background-color: rgb(12, 12, 12);
+ overflow-x: hidden; /* Isso esconde a barra de rolagem horizontal (overflow-y para Vertical) */
+}
+
+#inicio{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    left: 10px;
+    color: rgb(243, 235, 235);
+}
+
+.nav-item {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 14pt;
+  position: relative;
+  left: 25px;
+  border: 0.5px solid transparent; /* Define uma borda transparente por padrão */
+  padding: 8px; /* Adicione algum preenchimento para espaçamento visual */
+}
+
+.dropdown .dropdown-menu{
+    font-size: 14pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+@media screen and (min-width: 769px){
+  .dropend:hover > .dropdown-menu{
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-top: .125em;
+  margin-left: .125em;
+}
+}
+
+.drodpown:hover > .dropdown-menu, .dropend:hover > .dropdown-menu{
+  display: block;
+  margin-top: .125em;
+  margin-left: .125em;
+}
+
+.nav-item:hover {
+  border-style: initial; /* Estilo da borda ao passar o mouse */
+}
+
+#exercicios, #videoaulas, #resumos{
+  color: rgb(243, 235, 235);
+}
+
+#botao{
+    font-size: 14pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    right: 10px;
+    vertical-align: middle;
+}
+
+#botao .bi {
+  margin-top: -5px; /* Ajuste a margem superior conforme necessário */
+}
+
+#nome_usuario{
+  color: rgb(243, 235, 235);
+  display: inline-block; 
+  vertical-align: middle;
+  margin-right: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 14pt;
+}
+
+#imagem{
+  background-color: rgb(243, 235, 235);
+  margin-top: -5px;
+}
+
+@media screen and (min-width: 769px){
+#fundo_foda{
+  background-image: url("/img/fundo_teste.avif");
+  opacity: 99%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 70vh;
+  margin-top: .125em;
+  margin-left: .125em;
+}
+}
+
+@media screen and (min-width: 769px){
+#fisica{
+  background-image: url("/img/fundo_teste2.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 70vh;
+  margin-top: .125em;
+  margin-left: .125em;
+}
+}
+
+@media screen and (min-width: 769px){
+#quimica{
+  background-image: url("/img/fundo_teste3.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 70vh;
+  margin-top: .125em;
+  margin-left: .125em;
+}
+}
+
+@media screen and (min-width: 769px){
+#biologia{
+  background-image: url("/img/fundo_teste4.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 70vh;
+  margin-top: .125em;
+  margin-left: .150em;
+}
+}
+
+#titulos, #titulos2{
+  margin-top: 0.9px;
+  letter-spacing: 1px;
+  font-family: 'Tilt Neon', sans-serif;
+  font-size: 19pt;
+  color: rgb(243, 235, 235);
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+#titulos2{
+  margin-bottom: 50px;
+}
+
+#txt_card{
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+#fundo_card1, #fundo_card2, #fundo_card3{
+  background-color: rgb(243, 235, 235, 0.9);
+}
+
+.card{
+  height: 285px;
+  margin-left: 20px;
+}
+
+#fundo_card2{
+  margin-left: 135px;
+}
+
+#fundo_card3{
+  margin-left: 250px;
+}
+
+#submenu{
+  background-color: rgb(243, 235, 235);
+}
+
+.btn.btn-primary{
+  height: 50px;
+  width: 107px;
+  margin-left: 10px;
+}
+
+.btn .card-link{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: center;
+  font-size: 14pt;
+  color: white;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 769px){
+.btn.btn-info{
+  padding: 10px 20px;
+  display: flex;
+  margin-top: 50px;
+  margin-left: 630px;
+}
+}
+
+@media screen and (min-width: 769px){
+.footer{
+  background-color: rgb(14, 13, 13);
+  max-height: 40vh;
+  margin-top: .100em;
+  margin-left: .100em;
+}
+}
+
+.footer_text{
+  color: rgb(209, 198, 198);
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 14pt;
+}
+
+.footer_text2{
+  color: rgb(209, 198, 198);
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 14pt;
+  margin-top: 30px;
+}
+
+.footer-bottom{
+  height: 40px;
+  color: black;
+  background-color: rgb(179, 172, 172);
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 15pt;
+  margin-top: 30px;
+}
+
+.social-icons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+}
+
+#foto_footer{
+  margin: 0 10px;
+  height: 40px;
+  filter: invert(100%);
+}
+
+</style>
+
+<nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0);">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/" id="inicio">Início</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true" id="exercicios">
+            Exercícios
+          </a>
+          <ul class="dropdown-menu" style="background-color: rgb(243, 235, 235);">
+            <li class="nav dropend">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true" id="exercicios" style="color: black;">
+            Ensino Fundamental
+          </a>
+          <ul class="dropdown-menu" id="submenu">
+            <li><a class="dropdown-item" href="#">6° Ano</a></li>
+            <li><a class="dropdown-item" href="#">7° Ano</a></li>
+            <li><a class="dropdown-item" href="#">8° Ano</a></li>
+            <li><a class="dropdown-item" href="#">9° Ano</a></li>
+          </ul>
+        </li>
+            <li class="nav dropend">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true" id="exercicios" 
+          style="color: black;">
+            Ensino Médio
+          </a>
+          <ul class="dropdown-menu" id="submenu">
+           <li><a class="dropdown-item" href="#">1° Ano</a></li>
+           <li><a class="dropdown-item" href="#">2° Ano</a></li>
+           <li><a class="dropdown-item" href="#">3° Ano</a></li>
+          </ul>
+        </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="videoaulas">
+            Videoaulas
+          </a>
+          <ul class="dropdown-menu" style="background-color: rgb(243, 235, 235);">
+            <li class="nav dropend">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true" id="videoaulas" style="color: black;">
+            Ensino Fundamental
+          </a>
+          <ul class="dropdown-menu" id="submenu">
+            <li><a class="dropdown-item" href="#">6° Ano</a></li>
+            <li><a class="dropdown-item" href="#">7° Ano</a></li>
+            <li><a class="dropdown-item" href="#">8° Ano</a></li>
+            <li><a class="dropdown-item" href="#">9° Ano</a></li>
+          </ul>
+        </li>
+            <li class="nav dropend">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true" id="videoaulas" 
+          style="color: black;">
+            Ensino Médio
+          </a>
+          <ul class="dropdown-menu" id="submenu">
+           <li><a class="dropdown-item" href="#">1° Ano</a></li>
+           <li><a class="dropdown-item" href="#">2° Ano</a></li>
+           <li><a class="dropdown-item" href="#">3° Ano</a></li>
+          </ul>
+        </li>
+          </ul>
+        </li>
+       <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="resumos">
+            Resumos
+          </a>
+         <ul class="dropdown-menu" style="background-color: rgb(243, 235, 235);">
+            <li class="nav dropend">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true" id="resumos" style="color: black;">
+            Ensino Fundamental
+          </a>
+          <ul class="dropdown-menu" id="submenu">
+            <li><a class="dropdown-item" href="#">6° Ano</a></li>
+            <li><a class="dropdown-item" href="#">7° Ano</a></li>
+            <li><a class="dropdown-item" href="#">8° Ano</a></li>
+            <li><a class="dropdown-item" href="#">9° Ano</a></li>
+          </ul>
+        </li>
+            <li class="nav dropend">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true" id="resumos" 
+          style="color: black;">
+            Ensino Médio
+          </a>
+          <ul class="dropdown-menu" id="submenu">
+           <li><a class="dropdown-item" href="#">1° Ano</a></li>
+           <li><a class="dropdown-item" href="#">2° Ano</a></li>
+           <li><a class="dropdown-item" href="#">3° Ano</a></li>
+          </ul>
+        </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color: white;">Contato</a>
+        </li>
+      </ul>
+      <form class="d-flex" action="/alunos/logout" method="POST">
+        <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill me-1" viewBox="0 0 16 16" id="imagem">
+              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+            </svg>
+            <span id="nome_usuario">{{nomeDoUsuario}} - {{classeSelecionada}}</span>
+            <button type="submit" class="btn btn-danger" id="botao">Encerrar Sessão</button>
+        </span>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div id="fundo_foda">
+  <h2 id="titulos">6° ANO ao 8° ANO</h2>
+  <h2 id="titulos2">CIÊNCIAS</h2>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card" style="width: 25rem;" id="fundo_card1">
+        <div class="card-body">
+          <h5 class="card-title" id="txt_card">Terra e Universo</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary" id="txt_card">Sistema Solar</h6>
+          <p class="card-text">O sistema solar é nosso sistema planetário centrado no Sol, composto por oito planetas, luas e outros corpos celestes. Ele é essencial para a astronomia e a busca por vida extraterrestre.</p>
+          <button class="btn btn-primary mt-4"><a href="#" class="card-link" id="exercicios_button">Exercícios</a></button>
+          <button class="btn btn-primary mt-4"><a href="#" class="card-link">Videoaulas</a></button>
+          <button class="btn btn-primary mt-4"><a href="#" class="card-link">Resumos</a></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card" style="width: 25rem;" id="fundo_card2">
+        <div class="card-body">
+          <h5 class="card-title" id="txt_card">Anatomia e Fisiologia Humana</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary" id="txt_card">Sistemas do Corpo Humano</h6>
+          <p class="card-text">Estuda a estrutura e funcionamento do corpo humano, analisando sistemas como o cardiovascular, nervoso, respiratório e digestivo. Além disso, explora a saúde, doenças e como o corpo responde a condições patológicas.</p>
+        <button class="btn btn-primary mt"><a href="#" class="card-link">Exercícios</a></button>
+          <button class="btn btn-primary mt"><a href="#" class="card-link">Videoaulas</a></button>
+          <button class="btn btn-primary mt"><a href="#" class="card-link">Resumos</a></button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card" style="width: 25rem;" id="fundo_card3">
+        <div class="card-body">
+          <h5 class="card-title" id="txt_card">Evolução e Seleção Natural</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary" id="txt_card">Desvendando a Teoria de Darwin</h6>
+          <p class="card-text">Neste tópico, iremos explorar a teoria da evolução de Charles Darwin e aprender como a seleção natural leva à diversidade das espécies. Iremos discutir evidências da evolução e seu impacto na biodiversidade.</p>
+         <button class="btn btn-primary"><a href="#" class="card-link">Exercícios</a></button>
+          <button class="btn btn-primary"><a href="#" class="card-link">Videoaulas</a></button>
+          <button class="btn btn-primary"><a href="#" class="card-link">Resumos</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-info"><a href="#" class="card-link">Veja Mais</a></button>
+</div>
+<br>
+<div id="fisica">
+  <h2 id="titulos">9° ANO ao 3° ANO - Ensino Médio</h2>
+  <h2 id="titulos2">FÍSICA</h2>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card" style="width: 25rem;" id="fundo_card1">
+        <div class="card-body">
+          <h5 class="card-title" id="txt_card">Mecânica e Termodinâmica</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary" id="txt_card">Leis de Newton e Processos Termodinâmicos</h6>
+          <p class="card-text">Esta área da física explora as leis do movimento formuladas por Isaac Newton, abrangendo conceitos como inércia (primeira lei), força e aceleração (segunda lei) e ação e reação (terceira lei). </p>
+          <button class="btn btn-primary"><a href="#" class="card-link" id="exercicios_button">Exercícios</a></button>
+          <button class="btn btn-primary"><a href="#" class="card-link">Videoaulas</a></button>
+          <button class="btn btn-primary"><a href="#" class="card-link">Resumos</a></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card" style="width: 25rem;" id="fundo_card2">
+        <div class="card-body">
+          <h5 class="card-title" id="txt_card">Eletricidade e Magnetismo</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary" id="txt_card">Campos Elétricos e Magnetismo Fundamental</h6>
+          <p class="card-text">Este tópico abrange fenômenos elétricos e magnéticos. Ele inclui conceitos fundamentais, como carga elétrica, corrente elétrica, voltagem, resistência e circuitos elétricos.</p>
+        <button class="btn btn-primary mt-4"><a href="#" class="card-link">Exercícios</a></button>
+          <button class="btn btn-primary mt-4"><a href="#" class="card-link">Videoaulas</a></button>
+          <button class="btn btn-primary mt-4"><a href="#" class="card-link">Resumos</a></button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card" style="width: 25rem;" id="fundo_card3">
+        <div class="card-body">
+          <h5 class="card-title" id="txt_card">Termodinâmica</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary" id="txt_card">Leis da Termodinâmica e Processos Térmicos</h6>
+          <p class="card-text">Aborda a conservação de energia na forma de calor, as leis da termodinâmica, como a primeira lei (conservação de energia) e a segunda lei (entropia), bem como processos termodinâmicos, como expansão, compressão e transferência de calor.</p>
+         <button class="btn btn-primary"><a href="#" class="card-link">Exercícios</a></button>
+          <button class="btn btn-primary"><a href="#" class="card-link">Videoaulas</a></button>
+          <button class="btn btn-primary"><a href="#" class="card-link">Resumos</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-info"><a href="#" class="card-link">Veja Mais</a></button>
+</div>
+<br>
+<div id="quimica">
+  <h2 id="titulos">9° ANO ao 3° ANO - Ensino Médio</h2>
+  <h2 id="titulos2">QUÍMICA</h2>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card" style="width: 25rem;" id="fundo_card1">
+        <div class="card-body">
+          <h5 class="card-title" id="txt_card">Estrutura Atômica e Tabela Periódica</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary" id="txt_card">Átomos e Tabela Periódica</h6>
+          <p class="card-text">Este tópico aborda a estrutura fundamental dos átomos, incluindo prótons, nêutrons e elétrons, bem como a organização dos elementos na Tabela Periódica. Isso inclui entender as ligações químicas que mantêm os átomos juntos.</p>
+          <button class="btn btn-primary mt"><a href="#" class="card-link" id="exercicios_button">Exercícios</a></button>
+          <button class="btn btn-primary mt"><a href="#" class="card-link">Videoaulas</a></button>
+          <button class="btn btn-primary mt"><a href="#" class="card-link">Resumos</a></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card" style="width: 25rem;" id="fundo_card2">
+        <div class="card-body">
+          <h5 class="card-title" id="txt_card">Reações Químicas e Estequiometria</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary" id="txt_card">Balanceamento e Cálculos Estequiométricos</h6>
+          <p class="card-text">Envolve o estudo das reações químicas, equações, balanceamento e cálculos relacionados à quantidade de reagentes e produtos nas reações, incluindo conceitos como massa molar e mol.</p>
+        <button class="btn btn-primary mt-4"><a href="#" class="card-link">Exercícios</a></button>
+          <button class="btn btn-primary mt-4"><a href="#" class="card-link">Videoaulas</a></button>
+          <button class="btn btn-primary mt-4"><a href="#" class="card-link">Resumos</a></button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card" style="width: 25rem;" id="fundo_card3">
+        <div class="card-body">
+          <h5 class="card-title" id="txt_card">Química Orgânica</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary" id="txt_card">Compostos Orgânicos e Reações</h6>
+          <p class="card-text">Aborda a química dos compostos de carbono, incluindo grupos funcionais, isomeria e reações orgânicas comuns, essenciais para compreender os compostos encontrados na vida cotidiana, como hidrocarbonetos, álcoois e ácidos carboxílicos.</p>
+         <button class="btn btn-primary"><a href="#" class="card-link">Exercícios</a></button>
+          <button class="btn btn-primary"><a href="#" class="card-link">Videoaulas</a></button>
+          <button class="btn btn-primary"><a href="#" class="card-link">Resumos</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-info"><a href="#" class="card-link">Veja Mais</a></button>
+</div>
+<br>
+<div id="biologia">
+  <h2 id="titulos">9° ANO ao 3° ANO - Ensino Médio</h2>
+  <h2 id="titulos2">BIOLOGIA</h2>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card" style="width: 25rem;" id="fundo_card1">
+        <div class="card-body">
+          <h5 class="card-title" id="txt_card">Ecologia</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary" id="txt_card">Interações Ecológicas e Sustentabilidade</h6>
+          <p class="card-text">Este tópico aborda as interações entre os seres vivos e seus ambientes, examinando conceitos como ecossistemas, ciclos biogeoquímicos e conservação ambiental.</p>
+          <button class="btn btn-primary mt-4"><a href="#" class="card-link" id="exercicios_button">Exercícios</a></button>
+          <button class="btn btn-primary mt-4"><a href="#" class="card-link">Videoaulas</a></button>
+          <button class="btn btn-primary mt-4"><a href="#" class="card-link">Resumos</a></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card" style="width: 25rem;" id="fundo_card2">
+        <div class="card-body">
+          <h5 class="card-title" id="txt_card">Genética e Hereditariedade</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary" id="txt_card">Princípios Básicos da Herança Genética</h6>
+          <p class="card-text"> Genética é o estudo dos genes e da herança de características. Nesse tópicos iremos explorar como os genes determinam características e seguem padrões de herança.</p>
+        <button class="btn btn-primary mt-4"><a href="#" class="card-link">Exercícios</a></button>
+          <button class="btn btn-primary mt-4"><a href="#" class="card-link">Videoaulas</a></button>
+          <button class="btn btn-primary mt-4"><a href="#" class="card-link">Resumos</a></button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card" style="width: 25rem;" id="fundo_card3">
+        <div class="card-body">
+          <h5 class="card-title" id="txt_card">Microbiologia e Doenças Infecciosas</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary" id="txt_card">Microrganismos e Saúde Humana</h6>
+          <p class="card-text">Envolve a compreensão de microrganismos, como bactérias e vírus, e seu impacto na saúde humana. Aborda doenças infecciosas, epidemias, medidas de prevenção e a importância das vacinas.</p>
+         <button class="btn btn-primary mt-4"><a href="#" class="card-link">Exercícios</a></button>
+          <button class="btn btn-primary mt-4"><a href="#" class="card-link">Videoaulas</a></button>
+          <button class="btn btn-primary mt-4"><a href="#" class="card-link">Resumos</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-info"><a href="#" class="card-link">Veja Mais</a></button>
+</div>
+<br>
+
+<div class="footer">
+<div class="footer_text">
+Contato
+<div class="social-icons">
+  <a href="https://www.instagram.com/henriquecxavier_/"><img src="/img/instagram.png" alt="" id="foto_footer"></a>
+  <a href="https://www.facebook.com/henrique.cezar.505"><img src="/img/facebook.png" alt="" id="foto_footer"></a>
+</div>
+</div>
+<div class="footer_text2">
+  Celular: (13) 98875-9517
+</div>
+<div class="footer-bottom">
+  Henrique Cézar &copy; 2023 | Direitos Reservados
+</div>
+</div>

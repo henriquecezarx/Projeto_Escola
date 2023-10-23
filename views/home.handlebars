@@ -1,0 +1,67 @@
+<style>
+
+#inicio{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    left: 10px;
+    color: rgb(0, 0, 0);
+}
+/* CSS para adicionar uma borda suave e profissional apenas ao passar o mouse */
+.nav-item {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 14pt;
+  position: relative;
+  left: 25px;
+  border: 1px solid transparent; /* Define uma borda transparente por padrão */
+  padding: 10px; /* Adicione algum preenchimento para espaçamento visual */
+  color: rgb(0, 0, 0);
+}
+
+.dropdown-menu{
+    font-size: 13pt;
+}
+
+/* Gradiente de borda que aparece ao passar o mouse */
+.nav-item:hover {
+  border: 0.5px solid transparent; /* Define uma borda transparente por padrão */
+  padding: 8px; /* Adicione algum preenchimento para espaçamento visual */
+}
+
+#botao{
+    font-size: 14pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    right: 10px;
+    vertical-align: middle;
+    color: rgb(0, 0, 0);
+}
+
+#botao .bi {
+  margin-top: -5px; /* Ajuste a margem superior conforme necessário */
+}
+
+</style>
+
+<nav class="navbar navbar-expand-lg" style="background-color: rgb(255, 255, 255);">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/" id="inicio">Início</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="">Conteúdos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="">Contato</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search" method="GET" action="/entrar">
+        <button class="btn btn-primary" type="submit" id="botao"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill me-2" viewBox="0 0 16 16">
+  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+</svg>Portal do Aluno</button>
+      </form>
+    </div>
+  </div>
+</nav>

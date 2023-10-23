@@ -1,0 +1,174 @@
+<style>
+
+body{
+
+    background-image: url("/img/estudo_fundo.jpg");
+    background-size: cover;
+
+}
+
+#container {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    width: 100vw; /* 100% da largura da janela do navegador */
+    height: 100vh; /* 100% da altura da janela do navegador */
+}
+
+#fundo {
+    width: 450px;
+    height: 600px;
+    background-color: rgb(43, 154, 206, 0.9);
+}
+
+#input_username{
+    margin-left: 85px;
+    margin-top: 20px;
+    width: 300px;
+    height: 55px;
+}
+
+#input_password{
+    margin-left: 85px;
+    margin-top: 20px;
+    width: 300px;
+    height: 55px;
+}
+
+#input_email{
+    margin-left: 85px;
+    margin-top: 20px;
+    width: 300px;
+    height: 55px;
+}
+
+#input_name{
+    margin-left: 85px;
+    margin-top: 20px;
+    width: 300px;
+    height: 55px;
+}
+
+#portal{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20pt;
+    color: white;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;
+    margin-top: 25px;
+    letter-spacing: 3px;
+    margin-left: 15px;
+}
+
+#botao{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 50px;
+    margin-left: 85px;
+}
+
+#esquece_senha{
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 14pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 50px;
+    margin-left: 85px;
+    margin-top: 20px;
+}
+
+#criar_conta{
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 14pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 50px;
+    margin-left: 85px;
+    margin-top: 15px;
+}
+
+.form-select{
+    width: 300px;
+    margin-left: 85px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+#erros{
+    width: 350px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 540px;
+    margin-bottom: -80px;
+    margin-top: 20px;
+    display: flex;
+    letter-spacing: 1px;
+}
+
+</style>
+
+{{#each erros}}
+    <div class="alert alert-danger" id="erros">{{texto}}</div>
+{{else}}
+
+{{/each}}
+
+{{#if usuarioExistente}}
+<div class="alert alert-danger" id="erros">Usuário e/ou E-mail Já Cadastrado</div>
+{{/if}}
+
+<div id="container">
+    <div id="fundo">
+        <span id="portal">PORTAL DO ALUNO</span>
+<form action="/criar" method="POST">
+    <div class="input-group mb-3" id="input_username">
+        <span class="input-group-text" id="icon_username"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+    </svg></span>
+        <input type="text" class="form-control" placeholder="Usuário (Apenas Números)" aria-label="Username" aria-describedby="basic-addon1" id="username" required name="username">
+        </div>
+    <div class="input-group mb-3" id="input_name">
+        <span class="input-group-text" id="icon_name"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
+      <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5ZM9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8Zm1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5Zm-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96c.026-.163.04-.33.04-.5ZM7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z"/>
+    </svg></span>
+        <input type="text" class="form-control" placeholder="Nome Completo" aria-label="Name" aria-describedby="basic-addon1" id="name" required name="name">
+        </div>
+    <div class="input-group mb-3" id="input_email">
+        <span class="input-group-text" id="icon_email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+      <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+    </svg></span>
+        <input type="text" class="form-control" placeholder="E-mail" aria-label="E-mail" aria-describedby="basic-addon1" id="email" required name="email">
+        </div>
+    <div class="input-group mb-3" id="input_password">
+        <span class="input-group-text" id="icon_password"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-shield-lock" viewBox="0 0 16 16">
+      <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/>
+      <path d="M9.5 6.5a1.5 1.5 0 0 1-1 1.415l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99a1.5 1.5 0 1 1 2-1.415z"/>
+    </svg></span>
+        <input type="password" class="form-control" placeholder="Senha" aria-label="password" aria-describedby="basic-addon1" id="senha" required name="senha">
+        </div>
+        <select class="form-select" required aria-label="select example" name="classe">
+        <option selected>Selecione sua Classe</option>
+        <option value="EF 6º Ano">Ensino Fundamental - 6º Ano</option>
+        <option value="EF 7º Ano">Ensino Fundamental - 7º Ano</option>
+        <option value="EF 8º Ano">Ensino Fundamental - 8º Ano</option>
+        <option value="EF 9º Ano">Ensino Fundamental - 9º Ano</option>
+        <option value="EM 1º Ano">Ensino Médio - 1º Ano</option>
+        <option value="EM 2º Ano">Ensino Médio - 2º Ano</option>
+        <option value="EM 3º Ano">Ensino Médio - 3º Ano</option>
+        </select>
+        <button type="submit" class="btn btn-success" id="botao">Criar Conta</button>
+</form>
+    </div>
+</div>
