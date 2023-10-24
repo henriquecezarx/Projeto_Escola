@@ -150,7 +150,7 @@ app.get('/forgetpassword', (req, res) => {
     res.render('esquecer_senha')
 })
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 8090
 app.listen(PORT, () => {
     console.log(`Conectado na URL: http://localhost:${PORT}`)
 })
