@@ -1,10 +1,20 @@
 <style>
 
 body{
-
     background-image: url("/img/estudo_fundo.jpg");
     background-size: cover;
+    background-position: center;
+}
 
+#flash-messages {
+    position: absolute;
+    top: 30px;
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajusta a centralização horizontal */
+    z-index: 9999; /* Para garantir que esteja na parte superior */
+    width: 320px;
+    text-align: center;
+    letter-spacing: 1px;
 }
 
 #container {
@@ -16,8 +26,9 @@ body{
 }
 
 #fundo {
+    margin-top: 40px;
     width: 450px;
-    height: 600px;
+    height: 550px;
     background-color: rgb(43, 154, 206, 0.9);
 }
 
@@ -105,28 +116,49 @@ body{
     margin-bottom: 30px;
 }
 
-#erros{
-    width: 350px;
-    justify-content: center;
-    align-items: center;
-    margin-left: 540px;
-    margin-bottom: -80px;
-    margin-top: 20px;
+@media screen and (max-width: 768px) {
+
+    #container {
     display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    width: 100vw; /* 100% da largura da janela do navegador */
+    height: 100vh; /* 100% da altura da janela do navegador */
+    }
+
+    #fundo {
+        width: 95%; /* Preenche a largura da tela */
+        height: 70%; /* Ajusta a altura automaticamente */
+        margin-top: 10px; /* Remove o espaçamento superior */
+    }
+
+    #flash-messages {
+    position: absolute;
+    top: 20px;
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajusta a centralização horizontal */
+    z-index: 9999; /* Para garantir que esteja na parte superior */
+    width: 320px;
+    text-align: center;
     letter-spacing: 1px;
+    }
+
+    /* Outros ajustes específicos para dispositivos móveis */
 }
 
 </style>
 
-{{#each erros}}
-    <div class="alert alert-danger" id="erros">{{texto}}</div>
-{{else}}
-
-{{/each}}
-
-{{#if usuarioExistente}}
-<div class="alert alert-danger" id="erros">Usuário e/ou E-mail Já Cadastrado</div>
-{{/if}}
+<div id="flash-messages">
+    {{#each erros}}
+        <div class="alert alert-danger" id="erros">{{texto}}</div>
+    {{else}}
+    
+    {{/each}}
+    
+    {{#if usuarioExistente}}
+    <div class="alert alert-danger" id="erros">Usuário e/ou E-mail Já Cadastrado</div>
+    {{/if}}
+</div>
 
 <div id="container">
     <div id="fundo">

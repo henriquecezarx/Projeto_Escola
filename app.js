@@ -99,10 +99,15 @@ app.post('/criar', (req, res) => {
     if(req.body.senha.length < 4){
         erros.push({texto: 'Senha Muito Curta'})
     }
-
-    if(erros.length > 0){
-        res.render('criar', {erros: erros})
+    
+    if(!req.body.classe || req.body.classe == 'Selecione sua Classe'){
+        erros.push({texto: 'Selecione sua Classe'})
     }
+
+    if (erros.length > 0) {
+        res.render('criar', { erros: [erros[0]]});
+    }
+
     else{
         UserModel.findOne({$or: [{username: req.body.username}, {email: req.body.email}]}).lean().then((usuarioExistente) => {
             if (usuarioExistente){
