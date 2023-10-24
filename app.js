@@ -56,8 +56,8 @@ app.use(express.static(path.join(__dirname, "public")))
 
 //Mongoose
 mongoose.Promise = global.Promise
-const mongoDBURL = process.env.mongoDBURL
-mongoose.connect(mongoDBURL).then(() => {
+const MONGODB_URI = process.env.MONGODB_URI
+mongoose.connect(MONGODB_URI).then(() => {
     console.log('Conectado ao MongoDB')
 }).catch((err) => {
     console.log(err)
