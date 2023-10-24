@@ -83,32 +83,6 @@ body{
     margin-left: 85px;
 }
 
-#esquece_senha{
-    color: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 14pt;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: 50px;
-    margin-left: 85px;
-    margin-top: 20px;
-}
-
-#criar_conta{
-    color: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 14pt;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: 50px;
-    margin-left: 85px;
-    margin-top: 15px;
-}
-
 .form-select{
     width: 300px;
     margin-left: 85px;
@@ -119,17 +93,22 @@ body{
 @media screen and (max-width: 768px) {
 
     #container {
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    width: 100vw; /* 100% da largura da janela do navegador */
-    height: 100vh; /* 100% da altura da janela do navegador */
+        display: flex;
+        flex-direction: column; /* Empilhe os elementos verticalmente */
+        justify-content: center; /* Centraliza horizontalmente */
+        align-items: center; /* Centraliza verticalmente */
+        width: 100vw;
+        height: 100vh;
     }
 
     #fundo {
     width: 95%; /* Preenche a largura da tela */
     height: auto; /* Ajusta a altura automaticamente */
     margin-top: 10px; /* Remove o espaçamento superior */
+    flex-direction: column; /* Alinhe verticalmente */
+    justify-content: center; /* Centralize horizontalmente */
+    align-items: center; /* Centralize verticalmente */
+    display: flex; /* Adicione display flex */
     }
 
     #flash-messages {
@@ -143,77 +122,31 @@ body{
     letter-spacing: 1px;
     }
 
-#portal{
+#input_username, #input_password, #input_email, #input_name{
+    width: 90%;
+    max-width: 300px;
+    margin-top: 10px;
+    margin-left: 55px;
+}
+
+#botao{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 20pt;
-    color: white;
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center;
-    margin-top: 25px;
-    letter-spacing: 3px;
-    margin-left: 20px;
-}
-    
-    #input_username{
-    margin-left: 85px;
-    margin-top: 20px;
-    width: 300px;
-    height: 55px;
-}
-
-#input_password{
-    margin-left: 85px;
-    margin-top: 20px;
-    width: 300px;
-    height: 55px;
-}
-
-#input_email{
-    margin-left: 85px;
-    margin-top: 20px;
-    width: 300px;
-    height: 55px;
-}
-
-#input_name{
-    margin-left: 85px;
-    margin-top: 20px;
-    width: 300px;
-    height: 55px;
-}
-
-#esquece_senha{
-    color: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 14pt;
+    font-size: 16pt;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300px;
+    width: 250px;
     height: 50px;
-    margin-left: 85px;
-    margin-top: 20px;
-}
-
-#criar_conta{
-    color: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 14pt;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: 50px;
-    margin-left: 85px;
-    margin-top: 15px;
+    margin-left: 80px;
+    margin-right: 50px;
+    margin-bottom: 5px;
 }
 
 .form-select{
-    width: 300px;
-    margin-left: 85px;
-    margin-top: 15px;
-    margin-bottom: 30px;
+    width: 90%;
+    max-width: 300px;
+    margin-top: 10px;
+    margin-left: 55px;
 }
 
 }
