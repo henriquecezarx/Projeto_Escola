@@ -13,7 +13,6 @@ const UserModel = require('./Models/Usuario')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const SECRET = process.env.SECRET
-const databaseURL = process.env.databaseURL
 const authConfig = require('./config/auth')
 require('dotenv').config();
 
@@ -57,7 +56,8 @@ app.use(express.static(path.join(__dirname, "public")))
 
 //Mongoose
 mongoose.Promise = global.Promise
-mongoose.connect(databaseURL).then(() => {
+const mongoDBURL = process.env.mongoDBURL
+mongoose.connect(mongoDBURL).then(() => {
     console.log('Conectado ao MongoDB')
 }).catch((err) => {
     console.log(err)
