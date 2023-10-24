@@ -1,3 +1,4 @@
+require('dotenv').config();
 const passport = require('passport')
 const bcrypt = require('bcryptjs')
 const LocalStrategy = require('passport-local').Strategy
@@ -5,7 +6,6 @@ const UserModel = require('../Models/Usuario')
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 const SECRETAUTH = process.env.SECRETAUTH
-require('dotenv').config();
 
 module.exports = function(){
     passport.use(new LocalStrategy({

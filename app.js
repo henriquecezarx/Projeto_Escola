@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
@@ -14,7 +15,6 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const SECRET = process.env.SECRET
 const authConfig = require('./config/auth')
-require('dotenv').config();
 
 function authenticationMiddleware(req, res, next){
     if(req.isAuthenticated()){
@@ -150,7 +150,7 @@ app.get('/forgetpassword', (req, res) => {
     res.render('esquecer_senha')
 })
 
-const PORT = process.env.PORT || 8090
+const PORT = process.env.PORT
 app.listen(PORT, () => {
     console.log(`Conectado na URL: http://localhost:${PORT}`)
 })
