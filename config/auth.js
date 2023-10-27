@@ -26,7 +26,7 @@ module.exports = function(){
             const isMatch = await bcrypt.compare(password, user.senha)
 
             if(isMatch){
-                const token = jwt.sign({userId: user.id}, SECRETAUTH, {expiresIn: 500000})
+                const token = jwt.sign({userId: user.id}, SECRETAUTH, {expiresIn: 5000})
                 console.log(token)
                 return done(null, user, {user, token})
             }else{

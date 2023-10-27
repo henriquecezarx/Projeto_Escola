@@ -1,10 +1,10 @@
+require('dotenv').config();
 const express = require('express')
 const app = express()
 const path = require('path')
 const handlebars = require('express-handlebars')
 const router = express.Router()
 const passport = require('passport')
-require('dotenv').config();
 
 //Handlebars
 app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
@@ -15,6 +15,7 @@ app.locals.classeSelecionada = null;
 app.locals.nomeDoUsuario = null;
 
 router.get('/', (req, res) => {
+  
   app.locals.classeSelecionada = req.user.classe;
   app.locals.nomeDoUsuario = req.user.nome;
     res.render('alunos/principal', { nomeDoUsuario: app.locals.nomeDoUsuario, classeSelecionada: app.locals.classeSelecionada })
