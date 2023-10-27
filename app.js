@@ -64,7 +64,7 @@ mongoose.connect(MONGODB_URI).then(() => {
 })
 
 //Routes
-app.use('/alunos', authenticationMiddleware, usuario)
+app.use('/alunos', usuario)
 
 //Main Route
 app.get('/', (req, res) => {
@@ -138,7 +138,6 @@ app.post('/criar', (req, res) => {
             }
         })
     }
-
 })                          
 
 app.get('/entrar', (req, res) => {
