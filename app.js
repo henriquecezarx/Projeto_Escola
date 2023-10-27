@@ -16,13 +16,13 @@ const jwt = require('jsonwebtoken')
 const SECRET = process.env.SECRET
 const authConfig = require('./config/auth')
 
-function authenticationMiddleware(req, res, next){
+const authenticationMiddleware = ((req, res, next) => {
     if(req.isAuthenticated()){
-        return next()
+        next()
     }else{
         res.redirect('/entrar')
     }
-}
+})
 
 //Session
 app.use(session({
@@ -64,7 +64,7 @@ mongoose.connect(MONGODB_URI).then(() => {
 })
 
 //Routes
-app.use('/alunos', usuario)
+app.use('/alunos', authenticationMiddleware, usuario)
 
 //Main Route
 app.get('/', (req, res) => {
