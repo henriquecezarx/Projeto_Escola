@@ -11,14 +11,11 @@ app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 app.set('views', path.join(__dirname, 'views'))
 
-app.locals.classeSelecionada = null;
-app.locals.nomeDoUsuario = null;
 
 router.get('/', (req, res) => {
-  
-  app.locals.classeSelecionada = req.user.classe;
-  app.locals.nomeDoUsuario = req.user.nome;
-    res.render('alunos/principal', { nomeDoUsuario: app.locals.nomeDoUsuario, classeSelecionada: app.locals.classeSelecionada })
+  const nomeDoUsuario = req.user.nome
+  const classeSelecionada = req.classeSelecionada
+  res.render('alunos/principal', {nomeDoUsuario, classeSelecionada})
 })
 
 router.post('/logout', function(req, res, next){
@@ -30,14 +27,20 @@ router.post('/logout', function(req, res, next){
   });
 
 router.get('/exercicios/todasclasses', (req, res) => {
-  res.render('alunos/exercicios/todas_classes/all_ex', {nomeDoUsuario: app.locals.nomeDoUsuario, classeSelecionada: app.locals.classeSelecionada})
+  const nomeDoUsuario = req.user.nome
+  const classeSelecionada = req.classeSelecionada
+  res.render('alunos/exercicios/todas_classes/all_ex', {nomeDoUsuario, classeSelecionada})
 })
 
 router.get('/videoaulas/todasclasses', (req, res) => {
-  res.render('alunos/videoaulas/todas_classes/all_video', {nomeDoUsuario: app.locals.nomeDoUsuario, classeSelecionada: app.locals.classeSelecionada})
+  const nomeDoUsuario = req.user.nome
+  const classeSelecionada = req.classeSelecionada
+  res.render('alunos/videoaulas/todas_classes/all_video', {nomeDoUsuario, classeSelecionada})
 })
 
 router.get('/resumos/todasclasses', (req, res) => {
+  const nomeDoUsuario = req.user.nome
+  const classeSelecionada = req.classeSelecionada
   res.render('alunos/resumos/todas_classes/all_res', {nomeDoUsuario, classeSelecionada})
 })
 
