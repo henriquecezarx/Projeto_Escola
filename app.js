@@ -29,7 +29,6 @@ app.use(session({
     secret: 'henrique',
     resave: false, 
     saveUninitialized: false,
-    cookie: {maxAge: 50000 * 60 * 1000}
 }))
 
 //Middlewares
