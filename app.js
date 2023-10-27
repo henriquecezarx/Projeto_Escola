@@ -29,6 +29,7 @@ app.use(session({
     secret: 'henrique',
     resave: false, 
     saveUninitialized: false,
+    cookie: {maxAge: 50000 * 60 * 1000}
 }))
 
 //Middlewares
@@ -125,7 +126,7 @@ app.post('/criar', (req, res) => {
                             classe: req.body.classe,
                             senha: hashedPassword,
                         }).save().then(() => {
-                            const token = jwt.sign({userId: 1}, SECRET, {expiresIn: 5000})
+                            const token = jwt.sign({userId: 1}, SECRET, {expiresIn: 500000})
                             const successMessage = 'Usuário Cadastrado com Sucesso'
                             res.render('entrar', {success_msg: successMessage, token, nome: req.body.name})
                             console.log(token)

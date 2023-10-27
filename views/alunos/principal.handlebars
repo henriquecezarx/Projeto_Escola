@@ -1,7 +1,7 @@
 <style>
 
 body{
- background-color: rgb(12, 12, 12);
+ background-color: rgb(10, 10, 10);
  overflow-x: hidden; /* Isso esconde a barra de rolagem horizontal (overflow-y para Vertical) */
 }
 
@@ -125,7 +125,7 @@ body{
   margin-top: 0.9px;
   letter-spacing: 1px;
   font-family: 'Tilt Neon', sans-serif;
-  font-size: 19pt;
+  font-size: 16pt;
   color: rgb(243, 235, 235);
   justify-content: center;
   text-align: center;
@@ -187,7 +187,7 @@ body{
 
 @media screen and (min-width: 769px){
 .footer{
-  background-color: rgb(14, 13, 13);
+  background-color: rgb(0, 0, 0);
   max-height: 40vh;
   margin-top: .100em;
   margin-left: .100em;
@@ -202,7 +202,7 @@ body{
 }
 
 .footer_text2{
-  color: rgb(209, 198, 198);
+  color: rgb(226, 203, 203);
   text-align: center;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 14pt;
@@ -212,7 +212,7 @@ body{
 .footer-bottom{
   height: 40px;
   color: black;
-  background-color: rgb(179, 172, 172);
+  background-color: rgb(126, 161, 172);
   text-align: center;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 15pt;
@@ -230,6 +230,16 @@ body{
   margin: 0 10px;
   height: 40px;
   filter: invert(100%);
+}
+
+#foto_topo{
+  margin-bottom: 5px;
+  height: 40px;
+  filter: invert(100%);
+}
+
+html{
+  scroll-behavior: smooth;
 }
 
 </style>
@@ -269,6 +279,12 @@ body{
            <li><a class="dropdown-item" href="#">3° Ano</a></li>
           </ul>
         </li>
+        <li class="nav link">
+          <a class="nav-link" href="/alunos/exercicios/todasclasses" role="button" aria-expanded="true" id="todas" 
+          style="color: black;">
+            Todas as Classes
+          </a>
+        </li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -297,6 +313,12 @@ body{
            <li><a class="dropdown-item" href="#">2° Ano</a></li>
            <li><a class="dropdown-item" href="#">3° Ano</a></li>
           </ul>
+        </li>
+        <li class="nav link">
+          <a class="nav-link" href="/alunos/videoaulas/todasclasses" role="button"aria-expanded="false" id="todas" 
+          style="color: black;">
+            Todas as Classes
+          </a>
         </li>
           </ul>
         </li>
@@ -327,10 +349,16 @@ body{
            <li><a class="dropdown-item" href="#">3° Ano</a></li>
           </ul>
         </li>
+        <li class="nav link">
+          <a class="nav-link" href="/alunos/resumos/todasclasses" role="button" aria-expanded="false" id="todas" 
+          style="color: black;">
+            Todas as Classes
+          </a>
+        </li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" style="color: white;">Contato</a>
+          <a class="nav-link" href="#contato" style="color: white;">Contato</a>
         </li>
       </ul>
       <form class="d-flex" action="/alunos/logout" method="POST">
@@ -527,7 +555,7 @@ body{
 </div>
 <br>
 
-<div class="footer">
+<div class="footer" id="contato">
 <div class="footer_text">
 Contato
 <div class="social-icons">
@@ -536,9 +564,10 @@ Contato
 </div>
 </div>
 <div class="footer_text2">
-  Celular: (13) 98875-9517
+  Celular: (13) 98875-9517 <a href="#inicio"><img src="/img/voltar_topo.png" alt="" id="foto_topo"></a>
 </div>
 <div class="footer-bottom">
   Henrique Cézar &copy; 2023 | Direitos Reservados
 </div>
 </div>
+
