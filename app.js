@@ -59,16 +59,6 @@ mongoose.connect(MONGODB_URI).then(() => {
     console.log(err)
 })
 
-const authenticationMiddleware = (req, res, next) => {
-    if(req.isAuthenticated()){
-        console.log('Usuário autenticado. Permitindo acesso...')
-        next()
-    }else{
-        console.log('Usuário não autenticado. Redirecionando...')
-        res.redirect('/entrar')
-    }
-}
-
 //Main Route
 app.get('/', (req, res) => {
     res.render('home')
@@ -159,6 +149,16 @@ app.post('/entrar', passport.authenticate('local', {
 app.get('/forgetpassword', (req, res) => {
     res.render('esquecer_senha')
 })
+
+const authenticationMiddleware = (req, res, next) => {
+    if(req.isAuthenticated()){
+        console.log('Usuário autenticado. Permitindo acesso...')
+        next()
+    }else{
+        console.log('Usuário não autenticado. Redirecionando...')
+        res.redirect('/entrar')
+    }
+}
 
 //Routes
 app.use('/alunos', authenticationMiddleware, usuario)
