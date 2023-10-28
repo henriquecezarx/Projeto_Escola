@@ -80,6 +80,7 @@ app.get('/criar', (req, res) => {
 })
 
 app.post('/criar', (req, res) => {
+
     var erros = []
 
     if(!req.body.username){
@@ -122,6 +123,8 @@ app.post('/criar', (req, res) => {
                         console.log(err)
                         res.render('criar')
                     }else{
+                        const nomeDoUsuario = req.body.name
+                        const classeSelecionada = req.body.classe
                         const novoUsuario = new UserModel({
                             username: req.body.username,
                             nome: req.body.name,
@@ -131,7 +134,7 @@ app.post('/criar', (req, res) => {
                         }).save().then(() => {
                             const token = jwt.sign({userId: 1}, SECRET, {expiresIn: 5000})
                             const successMessage = 'Usuário Cadastrado com Sucesso'
-                            res.render('entrar', {success_msg: successMessage, token, nome: req.body.name})
+                            res.render('entrar', {success_msg: successMessage, token, nomeDoUsuario, classeSelecionada})
                             console.log(token)
                         }).catch((err) => {
                             console.log(err)
@@ -145,7 +148,7 @@ app.post('/criar', (req, res) => {
 })                          
 
 app.get('/entrar', (req, res) => {
-    res.render('entrar', { message: req.flash('error') });
+    res.render('entrar', { message: req.flash('error')});
   });
   
 app.post('/entrar', passport.authenticate('local', {
