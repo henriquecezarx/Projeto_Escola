@@ -10,14 +10,20 @@ app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 app.set('views', path.join(__dirname, 'views'))
 
-app.locals.classeSelecionada = null;
-app.locals.nomeDoUsuario = null;
+app.use((req, res, next) => {
+  if(req.isAuthenticated()){
+    app.locals.nomeDoUsuario = req.user.nome
+    app.locals.classeSelecionada = req.user.classeSelecionada
+
+  }else{
+    app.locals.nomeDoUsuario = null
+    app.locals.classeSelecionada = null
+  }
+  next()
+})
 
 router.get('/', (req, res) => {
-  
-  app.locals.classeSelecionada = req.user.classe;
-  app.locals.nomeDoUsuario = req.user.nome;
-    res.render('alunos/principal', { nomeDoUsuario: app.locals.nomeDoUsuario, classeSelecionada: app.locals.classeSelecionada })
+  res.render('alunos/principal', { nomeDoUsuario: app.locals.nomeDoUsuario, classeSelecionada: app.locals.classeSelecionada })
 })
 
 router.post('/logout', function(req, res, next){
