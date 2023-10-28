@@ -27,8 +27,8 @@ const authenticationMiddleware = ((req, res, next) => {
 //Session
 app.use(session({
     secret: 'henrique',
-    resave: false, 
-    saveUninitialized: false,
+    resave: true, 
+    saveUninitialized: true,
 }))
 
 //Middlewares
