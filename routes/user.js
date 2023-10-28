@@ -4,7 +4,6 @@ const app = express()
 const path = require('path')
 const handlebars = require('express-handlebars')
 const router = express.Router()
-const passport = require('passport')
 
 //Handlebars
 app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
@@ -30,7 +29,9 @@ router.post('/logout', function(req, res, next){
   });
 
 router.get('/exercicios/todasclasses', (req, res) => {
-  res.render('alunos/exercicios/todas_classes/all_ex', {nomeDoUsuario: app.locals.nomeDoUsuario, classeSelecionada: app.locals.classeSelecionada})
+  const nomeDoUsuario = req.user.nome
+  const classeSelecionada = req.user.classe
+  res.render('alunos/exercicios/todas_classes/all_ex', {nomeDoUsuario, classeSelecionada})
 })
 
 router.get('/videoaulas/todasclasses', (req, res) => {
@@ -38,6 +39,8 @@ router.get('/videoaulas/todasclasses', (req, res) => {
 })
 
 router.get('/resumos/todasclasses', (req, res) => {
+  const nomeDoUsuario = req.user.nome
+  const classeSelecionada = req.user.classe
   res.render('alunos/resumos/todas_classes/all_res', {nomeDoUsuario, classeSelecionada})
 })
 

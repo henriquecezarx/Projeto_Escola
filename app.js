@@ -16,19 +16,11 @@ const jwt = require('jsonwebtoken')
 const SECRET = process.env.SECRET
 const authConfig = require('./config/auth')
 
-const authenticationMiddleware = ((req, res, next) => {
-    if(req.isAuthenticated()){
-        next()
-    }else{
-        res.redirect('/entrar')
-    }
-})
-
 //Session
 app.use(session({
-    secret: 'henrique',
-    resave: true, 
-    saveUninitialized: true,
+    secret: 'henrique12345678',
+    resave: false, 
+    saveUninitialized: false,
 }))
 
 //Middlewares
@@ -62,6 +54,16 @@ mongoose.connect(MONGODB_URI).then(() => {
 }).catch((err) => {
     console.log(err)
 })
+
+const authenticationMiddleware = (req, res, next) => {
+    if(req.isAuthenticated()){
+        console.log('Usuário autenticado. Permitindo acesso...')
+        next()
+    }else{
+        console.log('Usuário não autenticado. Redirecionando...')
+        res.redirect('/entrar')
+    }
+}
 
 //Routes
 app.use('/alunos', authenticationMiddleware, usuario)
