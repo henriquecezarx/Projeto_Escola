@@ -22,9 +22,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: { 
-        httpOnly: true,
-        secure: false,
-        maxAge: 10 * 60 * 1000 }
+    maxAge: 10 * 60 * 1000 }
 }))
 
 //Middlewares
