@@ -30,8 +30,6 @@ app.use(session({
 //Middlewares
 app.use(passport.initialize())
 app.use(passport.session())
-authConfig()
-
 const authenticationMiddleware = (req, res, next) => {
     if(req.isAuthenticated()){
         console.log('Usuário autenticado. Permitindo acesso...')
@@ -41,6 +39,7 @@ const authenticationMiddleware = (req, res, next) => {
         res.redirect('/entrar')
     }
 }
+authConfig()
 
 //Routes
 app.use('/alunos', authenticationMiddleware, usuario)
