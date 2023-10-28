@@ -21,10 +21,6 @@ app.use(session({
     secret: "henrique12345678",
     resave: false,
     saveUninitialized: false,
-    cookie: { 
-        httpOnly: true,
-        secure: false,
-        maxAge: 500 * 60 * 1000 }
 }))
 
 //Middlewares
