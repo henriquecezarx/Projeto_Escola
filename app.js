@@ -21,6 +21,10 @@ app.use(session({
     secret: "henrique12345678",
     resave: false,
     saveUninitialized: false,
+    cookie: {
+        maxAge: 5 * 60 * 1000,
+        httpOnly: false
+    }
 }))
 
 //Middlewares
@@ -33,6 +37,16 @@ app.use((req, res, next) => {
     res.locals.error_msg = req.flash('error_msg')
     next()
 })
+
+const authenticationMiddleware = (req, res, next) => {
+    if(req.isAuthenticated()){
+        console.log('Usuário autenticado. Permitindo acesso...')
+        next()
+    }else{
+        console.log('Usuário não autenticado. Redirecionando...')
+        res.redirect('/entrar')
+    }
+}
 
 //Body Parser
 app.use(express.urlencoded({extended: true}))
@@ -145,16 +159,6 @@ app.post('/entrar', passport.authenticate('local', {
 app.get('/forgetpassword', (req, res) => {
     res.render('esquecer_senha')
 })
-
-const authenticationMiddleware = (req, res, next) => {
-    if(req.isAuthenticated()){
-        console.log('Usuário autenticado. Permitindo acesso...')
-        next()
-    }else{
-        console.log('Usuário não autenticado. Redirecionando...')
-        res.redirect('/entrar')
-    }
-}
 
 //Routes
 app.use('/alunos', authenticationMiddleware, usuario)
