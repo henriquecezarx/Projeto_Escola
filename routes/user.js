@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/logout', function(req, res, next){
-    req.logOut(function(err) {
+    req.logout(function(err) {
       if (err) { return next(err); }
       res.redirect('/entrar');
       console.log('SAIU')
