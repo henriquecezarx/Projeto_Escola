@@ -40,19 +40,23 @@ module.exports = function(){
     }))
     
     passport.serializeUser((user, done) => {
-        done(null, user.id);
-    });
-    
-    passport.deserializeUser(async (id, done) => {
+        return done(null, user)
+     })
+     
+     passport.deserializeUser(async (id, done) => {
         try {
+            // Recupere o usuário com base no ID do usuário (substitua isso com sua lógica real)
             const user = await UserModel.findById(id);
-            if (!user) {
-                return done(new Error("User not found"));
+            if (user) {
+                done(null, user);
+            } else {
+                done(new Error('Usuário não encontrado na sessão'), null);
             }
-            done(null, user);
         } catch (err) {
-            done(err);
+            console.log(err);
+            done(err, null);
         }
-})
-
+    });
 }
+
+

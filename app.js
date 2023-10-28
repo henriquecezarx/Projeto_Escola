@@ -24,7 +24,7 @@ app.use(session({
     cookie: { 
         httpOnly: true,
         secure: false,
-        maxAge: 5 * 60 * 1000 }
+        maxAge: 500 * 60 * 1000 }
 }))
 
 //Middlewares
@@ -59,12 +59,11 @@ mongoose.connect(MONGODB_URI).then(() => {
     console.log(err)
 })
 
-const authenticationMiddleware = (err, req, res, next) => {
+const authenticationMiddleware = (req, res, next) => {
     if(req.isAuthenticated()){
         console.log('Usuário autenticado. Permitindo acesso...')
         next()
     }else{
-        console.log(err)
         console.log('Usuário não autenticado. Redirecionando...')
         res.redirect('/entrar')
     }
@@ -123,8 +122,6 @@ app.post('/criar', (req, res) => {
                         console.log(err)
                         res.render('criar')
                     }else{
-                        const nomeDoUsuario = req.body.name
-                        const classeSelecionada = req.body.classe
                         const novoUsuario = new UserModel({
                             username: req.body.username,
                             nome: req.body.name,
@@ -132,6 +129,8 @@ app.post('/criar', (req, res) => {
                             classe: req.body.classe,
                             senha: hashedPassword,
                         }).save().then(() => {
+                            const nomeDoUsuario = req.body.name
+                            const classeSelecionada = req.body.classe
                             const token = jwt.sign({userId: 1}, SECRET, {expiresIn: 5000})
                             const successMessage = 'Usuário Cadastrado com Sucesso'
                             res.render('entrar', {success_msg: successMessage, token, nomeDoUsuario, classeSelecionada})
