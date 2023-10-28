@@ -18,9 +18,13 @@ const authConfig = require('./config/auth')
 
 //Session
 app.use(session({
-    secret: 'henrique12345678',
-    resave: false, 
+    secret: "henrique12345678",
+    resave: false,
     saveUninitialized: false,
+    cookie: { 
+        httpOnly: true,
+        secure: false,
+        maxAge: 5 * 60 * 1000 }
 }))
 
 //Middlewares
