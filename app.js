@@ -24,19 +24,13 @@ app.use(session({
     cookie: { 
         httpOnly: true,
         secure: false,
-        maxAge: 5 * 60 * 1000 }
+        maxAge: 10 * 60 * 1000 }
 }))
 
 //Middlewares
 app.use(passport.initialize())
 app.use(passport.session())
 authConfig()
-app.use(flash())
-app.use((req, res, next) => {
-    res.locals.success_msg = req.flash('success_msg')
-    res.locals.error_msg = req.flash('error_msg')
-    next()
-})
 
 const authenticationMiddleware = (req, res, next) => {
     if(req.isAuthenticated()){
@@ -50,6 +44,13 @@ const authenticationMiddleware = (req, res, next) => {
 
 //Routes
 app.use('/alunos', authenticationMiddleware, usuario)
+
+app.use(flash())
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg')
+    res.locals.error_msg = req.flash('error_msg')
+    next()
+})
 
 //Body Parser
 app.use(express.urlencoded({extended: true}))
@@ -132,11 +133,9 @@ app.post('/criar', (req, res) => {
                             classe: req.body.classe,
                             senha: hashedPassword,
                         }).save().then(() => {
-                            const nomeDoUsuario = req.body.name
-                            const classeSelecionada = req.body.classe
                             const token = jwt.sign({userId: 1}, SECRET, {expiresIn: 5000})
                             const successMessage = 'Usuário Cadastrado com Sucesso'
-                            res.render('entrar', {success_msg: successMessage, token, nomeDoUsuario, classeSelecionada})
+                            res.render('entrar', {success_msg: successMessage, token})
                             console.log(token)
                         }).catch((err) => {
                             console.log(err)
@@ -162,6 +161,9 @@ app.post('/entrar', passport.authenticate('local', {
 app.get('/forgetpassword', (req, res) => {
     res.render('esquecer_senha')
 })
+
+//Routes
+app.use('/alunos', authenticationMiddleware, usuario)
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {
