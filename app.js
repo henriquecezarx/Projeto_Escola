@@ -21,10 +21,10 @@ app.use(session({
     secret: "henrique12345678",
     resave: false,
     saveUninitialized: false,
-    cookie: {
-        maxAge: 5 * 60 * 1000,
-        httpOnly: false
-    }
+    cookie: { 
+        httpOnly: true,
+        secure: false,
+        maxAge: 5 * 60 * 1000 }
 }))
 
 //Middlewares
@@ -47,6 +47,9 @@ const authenticationMiddleware = (req, res, next) => {
         res.redirect('/entrar')
     }
 }
+
+//Routes
+app.use('/alunos', authenticationMiddleware, usuario)
 
 //Body Parser
 app.use(express.urlencoded({extended: true}))
@@ -159,9 +162,6 @@ app.post('/entrar', passport.authenticate('local', {
 app.get('/forgetpassword', (req, res) => {
     res.render('esquecer_senha')
 })
-
-//Routes
-app.use('/alunos', authenticationMiddleware, usuario)
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {
