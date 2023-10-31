@@ -26,9 +26,9 @@ module.exports = function(){
             const isMatch = await bcrypt.compare(password, user.senha)
 
             if(isMatch){
-                const token = jwt.sign({userId: user.id}, SECRETAUTH, {expiresIn: '1h'})
-                console.log(token)
-                return done(null, user, {user, token})
+                const token_auth = jwt.sign({userId: user.id}, SECRETAUTH, {expiresIn: '5h'})
+                console.log(token_auth)
+                return done(null, user, {user, token_auth: token_auth})
             }else{
                 return done(null, false, {message: 'Usuário e/ou Senha Inválidos'})
             }

@@ -14,6 +14,7 @@ const UserModel = require('./Models/Usuario')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const SECRET = process.env.SECRET
+const SECRETAUTH = process.env.SECRETAUTH
 const authConfig = require('./config/auth')
 
 //Session
@@ -26,20 +27,7 @@ app.use(session({
 //Middlewares
 app.use(passport.initialize())
 app.use(passport.session())
-const authenticationMiddleware = (req, res, next) => {
-    if(req.isAuthenticated()){
-        console.log('Usuário autenticado. Permitindo acesso...')
-        next()
-    }else{
-        console.log('Usuário não autenticado. Redirecionando...')
-        res.redirect('/entrar')
-    }
-}
 authConfig()
-
-//Routes
-app.use('/alunos', authenticationMiddleware, usuario)
-
 app.use(flash())
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg')
@@ -127,10 +115,10 @@ app.post('/criar', (req, res) => {
                             email: req.body.email,
                             classe: req.body.classe,
                             senha: hashedPassword,
-                        }).save().then(() => {
-                            const token = jwt.sign({userId: 1}, SECRET, {expiresIn: '1h'})
+                        }).save().then((user) => {
+                            const token = jwt.sign({userId: user._id}, SECRET, {expiresIn: '5h'})
                             const successMessage = 'Usuário Cadastrado com Sucesso'
-                            res.render('entrar', {success_msg: successMessage, token})
+                            res.render('entrar', {success_msg: successMessage, token: token})
                             console.log(token)
                         }).catch((err) => {
                             console.log(err)
@@ -156,6 +144,14 @@ app.post('/entrar', passport.authenticate('local', {
 app.get('/forgetpassword', (req, res) => {
     res.render('esquecer_senha')
 })
+
+const authenticationMiddleware = (req, res, next) => {
+    if (req.isAuthenticated()){
+        next()
+    }else{
+        res.redirect('/entrar')
+    }
+}
 
 //Routes
 app.use('/alunos', authenticationMiddleware, usuario)
