@@ -42,7 +42,7 @@ router.post('/logout', (req, res) => {
 })
 
 
-router.get('/exercicios/todasclasses', authenticationMiddleware, (req, res) => {
+router.get('/exercicios/todasclasses', (req, res) => {
   const nomeDoUsuario = req.user.nome
   const classeSelecionada = req.user.classe
   res.render('alunos/exercicios/todas_classes/all_ex', { nomeDoUsuario, classeSelecionada })
