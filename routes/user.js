@@ -29,20 +29,7 @@ router.get('/', authenticationMiddleware, (req, res) => {
     res.render('alunos/principal', { nomeDoUsuario, classeSelecionada })
 })
 
-router.post('/logout', (req, res) => {
-  req.logOut((err) => {
-    if(err){
-      console.log(err)
-      return next(err)
-    }else{
-      res.redirect('/entrar')
-      console.log('SAIU')
-    }
-  })
-})
-
-
-router.get('/exercicios/todasclasses', (req, res) => {
+router.get('/exercicios/todasclasses', authenticationMiddleware, (req, res) => {
   const nomeDoUsuario = req.user.nome
   const classeSelecionada = req.user.classe
   res.render('alunos/exercicios/todas_classes/all_ex', { nomeDoUsuario, classeSelecionada })
@@ -58,6 +45,18 @@ router.get('/resumos/todasclasses', authenticationMiddleware, (req, res) => {
   const nomeDoUsuario = req.user.nome
   const classeSelecionada = req.user.classe
   res.render('alunos/resumos/todas_classes/all_res', { nomeDoUsuario, classeSelecionada })
+})
+
+router.post('/logout', (req, res) => {
+  req.logOut((err) => {
+    if(err){
+      console.log(err)
+      return next(err)
+    }else{
+      res.redirect('/entrar')
+      console.log('SAIU')
+    }
+  })
 })
 
 module.exports = router
