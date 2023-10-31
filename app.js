@@ -14,7 +14,6 @@ const UserModel = require('./Models/Usuario')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const SECRET = process.env.SECRET
-const SECRETAUTH = process.env.SECRETAUTH
 const authConfig = require('./config/auth')
 
 //Session
@@ -145,16 +144,8 @@ app.get('/forgetpassword', (req, res) => {
     res.render('esquecer_senha')
 })
 
-const authenticationMiddleware = (req, res, next) => {
-    if (req.isAuthenticated()){
-        next()
-    }else{
-        res.redirect('/entrar')
-    }
-}
-
 //Routes
-app.use('/alunos', authenticationMiddleware, usuario)
+app.use('/alunos', usuario)
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {
