@@ -4,6 +4,8 @@ const app = express()
 const path = require('path')
 const handlebars = require('express-handlebars')
 const router = express.Router()
+const jwt = require('jsonwebtoken')
+const SECRETAUTH = process.env.SECRETAUTH
 
 //Middleware
 const authenticationMiddleware = (req, res, next) => {
@@ -18,30 +20,49 @@ const authenticationMiddleware = (req, res, next) => {
   }
 };
 
+const verifyJWT = (req, res, next) => {
+  const token_auth = req.user.token_auth
+
+  if (token_auth){
+    jwt.verify(token_auth, SECRETAUTH, (err, decoded) => {
+      if(err){
+        console.log('Erro na Verificação do Token: ',err)
+        res.redirect('/alunos')
+      }else{
+        req.user = decoded
+        next()
+      }
+    })
+  } else{
+    console.log('Token JWT ausente. Redirecionando...')
+    res.redirect('/entrar')
+  }
+}
+
 //Handlebars
 app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 app.set('views', path.join(__dirname, 'views'))
 
 router.get('/', authenticationMiddleware, (req, res) => {
-  const nomeDoUsuario = req.user.nome
-  const classeSelecionada = req.user.classe
+    const nomeDoUsuario = req.user.nome
+    const classeSelecionada = req.user.classe
     res.render('alunos/principal', { nomeDoUsuario, classeSelecionada })
 })
 
-router.get('/exercicios/todasclasses', authenticationMiddleware, (req, res) => {
+router.get('/exercicios/todasclasses', authenticationMiddleware, verifyJWT, (req, res) => {
   const nomeDoUsuario = req.user.nome
   const classeSelecionada = req.user.classe
   res.render('alunos/exercicios/todas_classes/all_ex', { nomeDoUsuario, classeSelecionada })
 })
 
-router.get('/videoaulas/todasclasses', authenticationMiddleware, (req, res) => {
+router.get('/videoaulas/todasclasses', verifyJWT, (req, res) => {
   const nomeDoUsuario = req.user.nome
   const classeSelecionada = req.user.classe
   res.render('alunos/videoaulas/todas_classes/all_video', { nomeDoUsuario, classeSelecionada })
 })
 
-router.get('/resumos/todasclasses', authenticationMiddleware, (req, res) => {
+router.get('/resumos/todasclasses', verifyJWT, (req, res) => {
   const nomeDoUsuario = req.user.nome
   const classeSelecionada = req.user.classe
   res.render('alunos/resumos/todas_classes/all_res', { nomeDoUsuario, classeSelecionada })
