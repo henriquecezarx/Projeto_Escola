@@ -14,6 +14,7 @@ const validator = require('validator')
 const UserModel = require('./Models/Usuario')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const MONGODB_URI = process.env.MONGODB_URI
 const SECRET = process.env.SECRET
 const authConfig = require('./config/auth')
 
@@ -22,7 +23,7 @@ app.use(session({
     secret: "henrique12345678",
     resave: true,
     saveUninitialized: true,
-    store: MongoStore.create({ mongoUrl: 'mongodb://0.0.0.0:27017/sessoes' }),
+    store: MongoStore.create({ mongoUrl: MONGODB_URI}),
     cookie: {
         maxAge: 3600000,
     }
@@ -54,7 +55,6 @@ app.use(express.static(path.join(__dirname, "public")))
 
 //Mongoose
 mongoose.Promise = global.Promise
-const MONGODB_URI = process.env.MONGODB_URI
 mongoose.connect(MONGODB_URI).then(() => {
     console.log('Conectado ao MongoDB')
 }).catch((err) => {
