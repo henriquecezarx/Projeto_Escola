@@ -9,7 +9,11 @@ const router = express.Router()
 const authenticationMiddleware = (req, res, next) => {
   if (req.isAuthenticated()) {
       const token_auth = req.user.token_auth; // Suponhamos que o token JWT esteja armazenado em req.user
+      const nomeDoUsuario = req.user.nome
+      const classeSelecionada = req.user.classe
       req.token_auth = token_auth; // Armazena o token no objeto de solicitação
+      req.nomeDoUsuario = nomeDoUsuario
+      req.classeSelecionada = classeSelecionada
       console.log('Usuário Autenticado. Permitindo acesso...')
       next();
   } else {
@@ -24,8 +28,8 @@ app.set('view engine', 'handlebars')
 app.set('views', path.join(__dirname, 'views'))
 
 router.get('/', authenticationMiddleware, (req, res) => {
-    const nomeDoUsuario = req.user.nome
-    const classeSelecionada = req.user.classe
+    const nomeDoUsuario = req.nomeDoUsuario
+    const classeSelecionada = req.classeSelecionada
     res.render('alunos/principal', { nomeDoUsuario, classeSelecionada })
 })
 
