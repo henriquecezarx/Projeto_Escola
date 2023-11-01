@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const session = require('express-session')
+const MongoStore = require('connect-mongo')
 const handlebars = require('express-handlebars')
 const flash = require('connect-flash')
 const path = require('path')
@@ -19,9 +20,14 @@ const authConfig = require('./config/auth')
 //Session
 app.use(session({
     secret: "henrique12345678",
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
+    store: MongoStore.create({ mongoUrl: 'mongodb://0.0.0.0:27017/sessoes' }),
+    cookie: {
+        maxAge: 3600000,
+    }
 }))
+
 
 //Middlewares
 app.use(passport.initialize())
