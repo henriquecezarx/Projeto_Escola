@@ -22,19 +22,6 @@ const authenticationMiddleware = (req, res, next) => {
   }
 };
 
-const verifyAuthentication = (req, res, next) => {
-  if(req.isAuthenticated()){
-    const nomeDoUsuario = req.user.nome
-    const classeSelecionada = req.user.classe
-    req.nomeDoUsuario = nomeDoUsuario
-    req.classeSelecionada = classeSelecionada
-    console.log('Usuário Entrou com Sucesso')
-    next()
-  } else{
-    res.redirect('/alunos')
-  }
-}
-
 //Handlebars
 app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
@@ -46,7 +33,7 @@ router.get('/', authenticationMiddleware, (req, res) => {
     res.render('alunos/principal', { nomeDoUsuario, classeSelecionada })
 })
 
-router.get('/exercicios/todasclasses', verifyAuthentication, (req, res) => {
+router.get('/exercicios/todasclasses', authenticationMiddleware, (req, res) => {
     const nomeDoUsuario = req.user.nome
     const classeSelecionada = req.user.classe
   res.render('alunos/exercicios/todas_classes/all_ex', { nomeDoUsuario, classeSelecionada })
