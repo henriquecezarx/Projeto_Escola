@@ -29,7 +29,6 @@ app.use(session({
     }
 }))
 
-
 //Middlewares
 app.use(passport.initialize())
 app.use(passport.session())

@@ -3,6 +3,8 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const handlebars = require('express-handlebars')
+const jwt = require('jsonwebtoken')
+const SECRETAUTH = process.env.SECRETAUTH
 const router = express.Router()
 
 //Middleware
@@ -20,7 +22,7 @@ const authenticationMiddleware = (req, res, next) => {
       console.log('Usuário Não Autenticado. Redirecionando...')
       res.redirect('/entrar');
   }
-};
+}
 
 //Handlebars
 app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
@@ -34,14 +36,14 @@ router.get('/', authenticationMiddleware, (req, res) => {
 })
 
 router.get('/exercicios/todasclasses', authenticationMiddleware, (req, res) => {
-    const nomeDoUsuario = req.user.nome
-    const classeSelecionada = req.user.classe
+    const nomeDoUsuario = req.nomeDoUsuario
+    const classeSelecionada = req.classeSelecionada
   res.render('alunos/exercicios/todas_classes/all_ex', { nomeDoUsuario, classeSelecionada })
 })
 
 router.get('/videoaulas/todasclasses', (req, res) => {
-  const nomeDoUsuario = req.user.nome
-  const classeSelecionada = req.user.classe
+    const nomeDoUsuario = req.nomeDoUsuario
+    const classeSelecionada = req.classeSelecionada
   res.render('alunos/videoaulas/todas_classes/all_video', { nomeDoUsuario, classeSelecionada })
 })
 
