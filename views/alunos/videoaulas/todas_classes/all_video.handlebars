@@ -1,0 +1,153 @@
+<style>
+
+body{
+ background-color: rgb(236, 231, 231);
+}
+
+#inicio{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    left: 10px;
+    color: rgb(243, 235, 235);
+}
+
+.nav-item {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 14pt;
+  position: relative;
+  left: 25px;
+  border: 0.5px solid transparent; /* Define uma borda transparente por padrão */
+  padding: 8px; /* Adicione algum preenchimento para espaçamento visual */
+}
+
+#botao{
+    font-size: 14pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    right: 10px;
+    vertical-align: middle;
+}
+
+.dropdown .dropdown-menu{
+    font-size: 14pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.drodpown:hover > .dropdown-menu, .dropend:hover > .dropdown-menu{
+  display: block;
+  margin-top: .125em;
+  margin-left: .125em;
+}
+
+.nav-item:hover {
+  border-style: initial; /* Estilo da borda ao passar o mouse */
+}
+
+#exercicios, #resumos{
+  color: rgb(243, 235, 235);
+}
+
+#nome_usuario{
+  color: rgb(243, 235, 235);
+  display: inline-block; 
+  vertical-align: middle;
+  margin-right: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 14pt;
+}
+
+#imagem{
+  background-color: rgb(243, 235, 235);
+  margin-top: -5px;
+}
+
+#submenu{
+  background-color: rgb(243, 235, 235);
+}
+
+.btn .card-link{
+    font-size: 14pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+    color: white;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-color: rgb(243, 235, 235); /* Substitua #ff0000 pela cor desejada */
+    border-radius: 11%; /* Define um raio para tornar o ícone mais arredondado */
+    width: 1.5rem; /* Ajuste a largura do ícone conforme necessário */
+    height: 1.5rem;
+}
+
+</style>
+
+<nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0);">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/alunos" id="inicio">Página do Aluno</a>
+    <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="exercicios">
+            Exercicios
+          </a>
+          <ul class="dropdown-menu" style="background-color: rgb(243, 235, 235);">
+            <li class="nav">
+          <a class="nav-link" href="#" role="button"id="exercicios" style="color: black;">
+            6º Ano - 8º Ano
+          </a>
+        </li>
+        <li class="nav">
+          <a class="nav-link" href="#" role="button"id="exercicios" style="color: black;">
+            9º Ano - 3º EM
+          </a>
+        </li>
+        <li class="nav link">
+          <a class="nav-link" href="/alunos/exercicios/todasclasses" role="button"aria-expanded="false" id="todas" 
+          style="color: black;">
+            Todas as Classes
+          </a>
+        </li>
+          </ul>
+        </li>
+       <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="resumos">
+            Resumos
+          </a>
+         <ul class="dropdown-menu" style="background-color: rgb(243, 235, 235);">
+           <li class="nav">
+          <a class="nav-link" href="#" role="button"id="exercicios" style="color: black;">
+            6º Ano - 8º Ano
+          </a>
+        </li>
+        <li class="nav">
+          <a class="nav-link" href="#" role="button"id="exercicios" style="color: black;">
+            9º Ano - 3º EM
+          </a>
+        </li>
+        <li class="nav link">
+          <a class="nav-link" href="/alunos/resumos/todasclasses" role="button" aria-expanded="false" id="todas" 
+          style="color: black;">
+            Todas as Classes
+          </a>
+        </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contato" style="color: white;">Contato</a>
+        </li>
+      </ul>
+      <form class="d-flex" action="/alunos/logout" method="POST">
+        <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill me-1" viewBox="0 0 16 16" id="imagem">
+              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+            </svg>
+            <span id="nome_usuario">{{nomeDoUsuario}} - {{classeSelecionada}}</span>
+            <button type="submit" class="btn btn-danger" id="botao">Encerrar Sessão</button>
+        </span>
+      </form>
+    </div>
+  </div>
+</nav>

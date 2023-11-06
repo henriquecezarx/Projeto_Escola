@@ -41,16 +41,22 @@ router.get('/exercicios/todasclasses', authenticationMiddleware, (req, res) => {
   res.render('alunos/exercicios/todas_classes/all_ex', { nomeDoUsuario, classeSelecionada })
 })
 
-router.get('/videoaulas/todasclasses', (req, res) => {
+router.get('/videoaulas/todasclasses', authenticationMiddleware, (req, res) => {
     const nomeDoUsuario = req.nomeDoUsuario
     const classeSelecionada = req.classeSelecionada
   res.render('alunos/videoaulas/todas_classes/all_video', { nomeDoUsuario, classeSelecionada })
 })
 
-router.get('/resumos/todasclasses',(req, res) => {
+router.get('/resumos/todasclasses', authenticationMiddleware, (req, res) => {
   const nomeDoUsuario = req.user.nome
   const classeSelecionada = req.user.classe
   res.render('alunos/resumos/todas_classes/all_res', { nomeDoUsuario, classeSelecionada })
+})
+
+router.get('/configuracoes', authenticationMiddleware, (req, res) => {
+  const nomeDoUsuario = req.user.nome
+  const classeSelecionada = req.user.classe
+  res.render('alunos/config', {nomeDoUsuario, classeSelecionada})
 })
 
 router.post('/logout', (req, res) => {
